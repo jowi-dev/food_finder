@@ -1,4 +1,4 @@
-# EsteeLauderTakehome
+# FoodFinder 
 
 ## Description
 This is a small CLI based application that will randomly generate a place to eat from a CSV.

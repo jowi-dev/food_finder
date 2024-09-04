@@ -1,4 +1,4 @@
-defmodule EsteeLauderTakehome.IO do
+defmodule FoodFinder.IO do
   @moduledoc """
   This module is mostly.. `pizzaz` because reading a random value from the CSV did not seem 
   charming enough to excite users.
@@ -30,17 +30,14 @@ defmodule EsteeLauderTakehome.IO do
   # two sides
   @borders_size 2
 
-  @typep dump_opts :: %{
-    to_string: boolean()
-  }
   @doc """
   Dumps the food truck data into a human readable string
 
   added opt for easier testing, or incase string dumping is needed
   """
-  @spec dump_truck(EsteeLauderTakehome.FoodTruck.t(), dump_opts()) :: String.t()
-  def dump_truck(truck, opts \\ %{to_string: false})
-  def dump_truck(truck, to_string: true) do 
+  @spec dump_truck(FoodFinder.FoodTruck.t(), FoodFinder.opts()) :: String.t()
+  def dump_truck(truck, opts \\ %{test: false})
+  def dump_truck(truck, %{test: true}) do 
     """
     Food Truck: #{truck.name}
     Menu: #{truck.food_items}
@@ -52,13 +49,21 @@ defmodule EsteeLauderTakehome.IO do
     menu = Owl.Data.tag("Menu: #{truck.food_items}\n", :green)
     address = Owl.Data.tag("Address: #{truck.address}",:magenta)
     Owl.IO.puts([name, menu, address])
+
+    """
+    Food Truck: #{truck.name}
+    Menu: #{truck.food_items}
+    Address: #{truck.address}
+    """
   end
 
   @doc """
   Builds suspense for the truck selection
   """
-  @spec roll_dice() :: :ok
-  def roll_dice do
+  @spec roll_dice(FoodFinder.opts()) :: :ok
+  def roll_dice(args \\ %{})
+  def roll_dice(%{test: true}), do: :ok
+  def roll_dice(_args) do
     dice = String.trim_trailing(@dice)
 
     Owl.LiveScreen.add_block(:demo,

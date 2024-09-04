@@ -1,8 +1,8 @@
-defmodule EsteeLauderTakehome.IOTest do 
+defmodule FoodFinder.IOTest do 
   use ExUnit.Case
 
   test "prints a food truck's name, address and menu" do 
-    truck = %EsteeLauderTakehome.FoodTruck{
+    truck = %FoodFinder.FoodTruck{
       name: "Bob's Burgers",
       food_items: "Burgers",
       address: "La Puente, California"
@@ -11,7 +11,7 @@ defmodule EsteeLauderTakehome.IOTest do
     Food Truck: Bob's Burgers
     Menu: Burgers
     Address: La Puente, California
-    """ = EsteeLauderTakehome.IO.dump_truck(truck, to_string: true)
+    """ = FoodFinder.IO.dump_truck(truck, %{test: true})
   end
 
 end

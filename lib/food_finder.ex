@@ -1,10 +1,10 @@
-defmodule EsteeLauderTakehome do
+defmodule FoodFinder do
   @moduledoc """
-  Documentation for `EsteeLauderTakehome`.
+  Documentation for `FoodFinder`.
   """
   alias NimbleCSV.RFC4180, as: CSV
-  alias EsteeLauderTakehome.FoodTruck
-  alias EsteeLauderTakehome.IO, as: Prompt
+  alias FoodFinder.FoodTruck
+  alias FoodFinder.IO, as: Prompt
 
   @food_truck_path "priv/food_trucks.csv"
 
@@ -25,14 +25,24 @@ defmodule EsteeLauderTakehome do
     |> Enum.to_list()
   end
 
-  @spec start() :: :ok
-  def start() do
-    Prompt.roll_dice()
+  @type opts :: %{
+    test: boolean()
+  }
 
-    IO.puts"======== The pick is in! ========"
+  @spec start(opts()) :: :ok
+  def start(opts \\ %{}) do
+    unless Map.get(opts, :test, false) do 
+      IO.puts"======== Initializing Suspense Engine... ========"
+    end
+    Prompt.roll_dice(opts)
+
+    unless Map.get(opts, :test, false) do 
+      IO.puts"======== The pick is in! ========"
+    end
+
     @food_truck_path
     |> read_food_trucks()
     |> Enum.random()
-    |> Prompt.dump_truck()
+    |> Prompt.dump_truck(opts)
   end
 end

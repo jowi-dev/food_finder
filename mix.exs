@@ -1,9 +1,9 @@
-defmodule EsteeLauderTakehome.MixProject do
+defmodule FoodFinder.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :estee_lauder_takehome,
+      app: :food_finder,
       version: "0.1.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,

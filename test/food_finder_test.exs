@@ -1,6 +1,6 @@
-defmodule EsteeLauderTakehomeTest do
+defmodule FoodFinderTest do
   use ExUnit.Case
-  doctest EsteeLauderTakehome
+  doctest FoodFinder 
 
   # incase we want to mock this later
   @food_truck_path "priv/food_trucks.csv"
@@ -8,13 +8,13 @@ defmodule EsteeLauderTakehomeTest do
   test "reads lines from csv" do
     assert 0 <
              @food_truck_path
-             |> EsteeLauderTakehome.read_food_trucks()
+             |> FoodFinder.read_food_trucks()
              |> Enum.count()
   end
 
   test "only pulls approved food trucks" do
     assert @food_truck_path
-           |> EsteeLauderTakehome.read_food_trucks()
+           |> FoodFinder.read_food_trucks()
            |> Enum.all?(fn truck -> truck.status == "APPROVED" end)
   end
 
@@ -22,9 +22,16 @@ defmodule EsteeLauderTakehomeTest do
   @tag :skip
   test "only pulls food trucks with a schedule for easier picking" do
     assert @food_truck_path
-           |> EsteeLauderTakehome.read_food_trucks()
+           |> FoodFinder.read_food_trucks()
            |> Enum.all?(fn truck -> not is_nil(truck.schedule) and truck.schedule != "" end)
   end
 
 
+  test "outputs a string representation of a food truck" do 
+    output = FoodFinder.start(%{test: true})
+
+    assert output =~ "Food Truck: " 
+    assert output =~ "Menu: " 
+    assert output =~ "Address: " 
+  end
 end

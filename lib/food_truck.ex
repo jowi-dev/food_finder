@@ -1,4 +1,4 @@
-defmodule EsteeLauderTakehome.FoodTruck do
+defmodule FoodFinder.FoodTruck do
   alias __MODULE__
   defstruct [:name, :food_items, :address, :schedule, :status]
 
