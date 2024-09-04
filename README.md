@@ -18,4 +18,4 @@ being the intersection between lowest time to implement, and one of the most uni
 
 
 ## Running the Project
-This project was built with elixir 1.16, so that will need to be installed. Apart from that, a simple `mix deps.get` and `mix run`
+This project was built with elixir 1.16, so that will need to be installed. Apart from that, a simple `mix deps.get` and `mix run find_food.exs`

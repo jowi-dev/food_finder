@@ -1,4 +1,8 @@
 defmodule FoodFinder.FoodTruck do
+  @moduledoc """
+  Although Ecto would have been an appropriate solution for this problem, using a struct felt significantly 
+  lighter and easier. Given this whole project is a CLI, less is more.
+  """
   alias __MODULE__
   defstruct [:name, :food_items, :address, :schedule, :status]
 
@@ -42,33 +46,3 @@ defmodule FoodFinder.FoodTruck do
     }
   end
 end
-
-# locationid,
-# Applicant,
-# FacilityType,
-# cnn,
-# LocationDescription,
-# Address,
-# blocklot,
-# block,
-# lot,
-# permit,
-# Status,
-# FoodItems,
-# X,
-# Y,
-# Latitude,
-# Longitude,
-# Schedule,
-# dayshours,
-# NOISent,
-# Approved,
-# Received,
-# PriorPermit,
-# ExpirationDate,
-# Location,
-# Fire Prevention Districts,
-# Police Districts,
-# Supervisor Districts,
-# Zip Codes,
-# Neighborhoods (old)

@@ -1,6 +1,11 @@
 defmodule FoodFinder do
   @moduledoc """
-  Documentation for `FoodFinder`.
+  Food Finder 
+  This is the main entry point of the application. It is comprised of two functions: 
+
+  read_food_trucks/1 - digests the CSV in the priv/ directory
+
+  start/1 - handles selection and decorative outputs
   """
   alias NimbleCSV.RFC4180, as: CSV
   alias FoodFinder.FoodTruck
